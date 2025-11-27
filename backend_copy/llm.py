@@ -68,4 +68,5 @@ def generate_answer(
         output = model.generate(**inputs, generation_config=gen_config)
 
     decoded = tokenizer.decode(output[0], skip_special_tokens=True)
-    return decoded
+    answer = decoded.split("</think>", 1)[-1].strip()
+    return answer
